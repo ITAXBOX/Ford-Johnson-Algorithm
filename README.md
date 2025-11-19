@@ -1,4 +1,4 @@
-# Ford-Johnson Algorithm (Merge-Insertion Sort)
+# Ford-Johnson Algorithm
 
 <div align="center">
 
