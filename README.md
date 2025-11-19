@@ -14,24 +14,6 @@
 
 ---
 
-## 📋 Table of Contents
-
-- [Overview](#overview)
-- [Algorithm Background](#algorithm-background)
-- [Features](#features)
-- [Mathematical Optimality](#mathematical-optimality)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Performance Analysis](#performance-analysis)
-- [Implementation Details](#implementation-details)
-- [Testing](#testing)
-- [Technical Specifications](#technical-specifications)
-- [References](#references)
-- [Author](#author)
-- [License](#license)
-
----
-
 ## 🎯 Overview
 
 This project implements the **Ford-Johnson Algorithm** (also known as **merge-insertion sort**), a comparison-based sorting algorithm that achieves the minimum number of comparisons for small input sizes. The implementation uses both `std::vector` and `std::deque` containers to demonstrate the algorithm's behavior across different data structures.
