@@ -26,6 +26,9 @@
 - [Implementation Details](#implementation-details)
 - [Testing](#testing)
 - [Technical Specifications](#technical-specifications)
+- [References](#references)
+- [Author](#author)
+- [License](#license)
 
 ---
 
