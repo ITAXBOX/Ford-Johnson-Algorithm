@@ -169,18 +169,13 @@ int FordJohnson::binarySearchPositionVector(std::vector<int> &mainChain, int val
 		int mid = (low + high) / 2;
 		comparisons++;
 
-		if (mainChain[mid] == value)
-			return mid;
-		else if (mainChain[mid] > value)
+		if (mainChain[mid] > value)
 			high = mid - 1;
 		else
 			low = mid + 1;
 	}
 
-	if (low < static_cast<int>(mainChain.size()) && value < mainChain[low])
-		return low;
-
-	return mainChain.size();
+	return low;
 }
 
 std::vector<int> FordJohnson::generateJacobsthalSequenceVector(int size)
@@ -369,18 +364,13 @@ int FordJohnson::binarySearchPositionDeque(std::deque<int> &mainChain, int value
 		int mid = (low + high) / 2;
 		comparisons++;
 
-		if (mainChain[mid] == value)
-			return mid;
-		else if (mainChain[mid] > value)
+		if (mainChain[mid] > value)
 			high = mid - 1;
 		else
 			low = mid + 1;
 	}
 
-	if (low < static_cast<int>(mainChain.size()) && value < mainChain[low])
-		return low;
-
-	return mainChain.size();
+	return low;
 }
 
 std::deque<int> FordJohnson::generateJacobsthalSequenceDeque(int size)
