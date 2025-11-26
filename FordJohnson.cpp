@@ -77,14 +77,14 @@ int FordJohnson::generateJacobsthal(int n)
 	if (n == 1)
 		return 1;
 
-	int prev2 = 0, prev1 = 1, curr = 0;
-	for (int i = 2; i <= n; i++)
+	int a = 0, b = 1;
+	for (int i = 2; i <= n; ++i)
 	{
-		curr = prev1 + 2 * prev2;
-		prev2 = prev1;
-		prev1 = curr;
+		int next = b + 2 * a;
+		a = b;
+		b = next;
 	}
-	return curr;
+	return b;
 }
 
 // ============== VECTOR IMPLEMENTATION ==============
