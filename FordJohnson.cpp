@@ -190,7 +190,6 @@ std::vector<int> FordJohnson::generateJacobsthalSequenceVector(int size)
 
 void FordJohnson::adjustJacobsthalIndicesVector(std::vector<int> &jacobIndices, std::vector<int> &pendChain)
 {
-	std::vector<int>::iterator it = jacobIndices.begin();
 	std::vector<int> processedNumbers;
 	std::vector<int> adjustedIndices;
 
@@ -198,12 +197,11 @@ void FordJohnson::adjustJacobsthalIndicesVector(std::vector<int> &jacobIndices, 
 	// This loop expands the Jacobsthal indices to cover all necessary positions
 	// Example : If Jacobsthal indices are [3, 5], and pendChain size is 6,
 	// it will expand to [3, 2, 5, 4]
-	while (it != jacobIndices.end())
+	for (std::vector<int>::iterator it = jacobIndices.begin(); it != jacobIndices.end(); it++)
 	{
-		int x;
-		if (*it >= 0)
+		int x = *it;
+		if (x >= 0)
 		{
-			x = *it;
 			while (x > 1)
 			{
 				if (std::find(processedNumbers.begin(), processedNumbers.end(), x) == processedNumbers.end())
@@ -216,7 +214,6 @@ void FordJohnson::adjustJacobsthalIndicesVector(std::vector<int> &jacobIndices, 
 				x--;
 			}
 		}
-		it++;
 	}
 
 	// Final adjustment to ensure all pendChain elements are covered
@@ -381,16 +378,14 @@ std::deque<int> FordJohnson::generateJacobsthalSequenceDeque(int size)
 
 void FordJohnson::adjustJacobsthalIndicesDeque(std::deque<int> &jacobIndices, std::deque<int> &pendChain)
 {
-	std::deque<int>::iterator it = jacobIndices.begin();
 	std::deque<int> processedNumbers;
 	std::deque<int> adjustedIndices;
 
-	while (it != jacobIndices.end())
+	for (std::deque<int>::iterator it = jacobIndices.begin(); it != jacobIndices.end(); it++)
 	{
-		int x;
-		if (*it >= 0)
+		int x = *it;
+		if (x >= 0)
 		{
-			x = *it;
 			while (x > 1)
 			{
 				if (std::find(processedNumbers.begin(), processedNumbers.end(), x) == processedNumbers.end())
@@ -403,7 +398,6 @@ void FordJohnson::adjustJacobsthalIndicesDeque(std::deque<int> &jacobIndices, st
 				x--;
 			}
 		}
-		it++;
 	}
 
 	if (adjustedIndices.size() == pendChain.size())
