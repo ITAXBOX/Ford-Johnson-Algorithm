@@ -178,14 +178,13 @@ int FordJohnson::binarySearchPositionVector(std::vector<int> &mainChain, int val
 std::vector<int> FordJohnson::generateJacobsthalSequenceVector(int size)
 {
 	std::vector<int> jacobSequence;
-	int jacobIndex = 3;
-
-	while (generateJacobsthal(jacobIndex) <= size)
+	for (int jacobIndex = 3; ; ++jacobIndex)
 	{
-		jacobSequence.push_back(generateJacobsthal(jacobIndex));
-		jacobIndex++;
+		int jacobNum = generateJacobsthal(jacobIndex);
+		if (jacobNum > size)
+			break;
+		jacobSequence.push_back(jacobNum);
 	}
-
 	return jacobSequence;
 }
 
@@ -370,14 +369,13 @@ int FordJohnson::binarySearchPositionDeque(std::deque<int> &mainChain, int value
 std::deque<int> FordJohnson::generateJacobsthalSequenceDeque(int size)
 {
 	std::deque<int> jacobSequence;
-	int jacobIndex = 3;
-
-	while (generateJacobsthal(jacobIndex) <= size)
+	for (int jacobIndex = 3; ; ++jacobIndex)
 	{
-		jacobSequence.push_back(generateJacobsthal(jacobIndex));
-		jacobIndex++;
+		int jacobNum = generateJacobsthal(jacobIndex);
+		if (jacobNum > size)
+			break;
+		jacobSequence.push_back(jacobNum);
 	}
-
 	return jacobSequence;
 }
 
