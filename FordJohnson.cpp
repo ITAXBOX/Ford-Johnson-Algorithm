@@ -38,7 +38,7 @@ void FordJohnson::displayResults()
 void FordJohnson::validateInput(char **argv)
 {
 	if (argv[1] == NULL)
-		throw std::invalid_argument("Error: No input provided.");
+		throw std::invalid_argument("Error: you must provide at least one number to sort!");
 
 	std::set<int> seenNumbers;
 
@@ -55,14 +55,14 @@ void FordJohnson::validateInput(char **argv)
 
 			for (size_t j = 0; j < number.size(); j++)
 				if (!isdigit(number[j]))
-					throw std::invalid_argument("Error: Input contains non-numeric characters.");
+					throw std::invalid_argument("Error: the input must contain only non-negative integers!");
 
 			long num = std::atol(number.c_str());
 			if (num < INT_MIN || num > INT_MAX)
-				throw std::invalid_argument("Error: Number is out of range (must be between 0 and 2147483647).");
+				throw std::invalid_argument("Error: number out of integer range!");
 
 			if (seenNumbers.find(static_cast<int>(num)) != seenNumbers.end())
-				throw std::invalid_argument("Error: Duplicate numbers are not allowed.");
+				throw std::invalid_argument("Error: duplicates are not allowed!");
 			seenNumbers.insert(static_cast<int>(num));
 		}
 	}
@@ -107,32 +107,29 @@ std::vector<int> FordJohnson::mergeInsertSortVector(std::vector<int> &data, int 
 	std::vector<int> mainChain, pendChain, sortedMain, sortedPend;
 	bool hasOddElement = (data.size() % 2 == 1);
 
-	std::vector<int>::iterator it = data.begin();
-	while (it != data.end())
-	{
-		if ((it + 1) == data.end())
-			break;
+	for (size_t i = 0; i < data.size() / 2; i++)
+    {
+        int a = data[i * 2];
+        int b = data[i * 2 + 1];
 
-		comparisons++;
-		if (*it > *(it + 1))
-		{
-			mainChain.push_back(*it);
-			pendChain.push_back(*(it + 1));
-		}
-		else
-		{
-			pendChain.push_back(*it);
-			mainChain.push_back(*(it + 1));
-		}
-		it += 2;
-	}
+        comparisons++;
+        if (a > b)
+        {
+            mainChain.push_back(a);
+            pendChain.push_back(b);
+        }
+        else
+        {
+            mainChain.push_back(b);
+            pendChain.push_back(a);
+        }
+    }
 
 	if (hasOddElement)
 		pendChain.push_back(data.back());
 
 	sortedMain = mergeInsertSortVector(mainChain, comparisons);
 
-	sortedPend.clear();
 	sortedPend.resize(sortedMain.size());
 
 	for (size_t i = 0; i < sortedMain.size(); ++i)
@@ -302,32 +299,29 @@ std::deque<int> FordJohnson::mergeInsertSortDeque(std::deque<int> &data, int &co
 	std::deque<int> mainChain, pendChain, sortedMain, sortedPend;
 	bool hasOddElement = (data.size() % 2 == 1);
 
-	std::deque<int>::iterator it = data.begin();
-	while (it != data.end())
-	{
-		if ((it + 1) == data.end())
-			break;
+	for (size_t i = 0; i < data.size() / 2; i++)
+    {
+        int a = data[i * 2];
+        int b = data[i * 2 + 1];
 
-		comparisons++;
-		if (*it > *(it + 1))
-		{
-			mainChain.push_back(*it);
-			pendChain.push_back(*(it + 1));
-		}
-		else
-		{
-			pendChain.push_back(*it);
-			mainChain.push_back(*(it + 1));
-		}
-		it += 2;
-	}
+        comparisons++;
+        if (a > b)
+        {
+            mainChain.push_back(a);
+            pendChain.push_back(b);
+        }
+        else
+        {
+            mainChain.push_back(b);
+            pendChain.push_back(a);
+        }
+    }
 
 	if (hasOddElement)
 		pendChain.push_back(data.back());
 
 	sortedMain = mergeInsertSortDeque(mainChain, comparisons);
 
-	sortedPend.clear();
 	sortedPend.resize(sortedMain.size());
 
 	for (size_t i = 0; i < sortedMain.size(); ++i)
